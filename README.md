@@ -31,5 +31,4 @@ proc dumpHook*(s: var string, v: TrackExtension) =
   s.dumpHook(v.trackExtensionUrl)
   s.add '}'
 ```
-https://gitlab.com/tandy1000/listenbrainz-nim/-/blob/master/src/listenbrainz/utils/tools.nim
-
+https://gitlab.com/tandy1000/listenbrainz-nim/-/blob/master/src/listenbrainz/utils/tools.nim#L57
