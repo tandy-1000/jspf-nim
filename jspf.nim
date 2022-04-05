@@ -42,6 +42,26 @@ type
     addedBy*, addedAt*: Option[string]
     artistMbids*: seq[string]
 
+func newJSPF*(playlist: JSPFPlaylist): JSPF =
+  result = JSPF(playlist: playlist)
+
+func newJSPFPlaylist*(
+    track: seq[JSPFTrack],
+    extension: Option[PlaylistExtension] = none(PlaylistExtension),
+    date, license, identifier, location: Option[string] = none(string),
+    meta, attribution, link: Option[seq[JSPFAttributes]] = none(seq[JSPFAttributes])): JSPFPlaylist =
+  result = JSPFPlaylist(
+    extension: extension,
+    track: track,
+    date: date,
+    license: license,
+    meta: meta,
+    attribution: attribution,
+    link: link,
+    identifier: identifier,
+    location: location
+  )
+
 func newJSPFTrack*(
   title, creator, annotation, info, image, album, identifier, location: Option[string] = none(string),
   trackNum, duration: Option[int] = none(int),
@@ -59,4 +79,39 @@ func newJSPFTrack*(
     location: location,
     meta: meta,
     link: link
+  )
+
+func newJSPFAttributes*(rel, content: string): JSPFAttributes =
+  result = JSPFAttributes(rel: rel, content: content)
+
+func newPlaylistExtension*(playlistExtensionUrl: PlaylistExtensionObject): PlaylistExtension =
+  result = PlaylistExtension(playlistExtensionUrl: playlistExtensionUrl)
+
+func newPlaylistExtensionObject*(
+  creator, createdFor, public: string,
+  collaborators: seq[string],
+  copiedFrom, lastModifiedAt: Option[string] = none(string),
+  copiedFromDeleted: Option[bool] = none(bool)): PlaylistExtensionObject =
+  result = PlaylistExtensionObject(
+    creator: creator,
+    createdFor: createdFor,
+    collaborators: collaborators,
+    copiedFrom: copiedFrom,
+    lastModifiedAt: lastModifiedAt,
+    copiedFromDeleted: copiedFromDeleted,
+    public: public
+  )
+
+func newTrackExtension*(trackExtensionUrl: TrackExtensionObject): TrackExtension =
+  result = TrackExtension(trackExtensionUrl: trackExtensionUrl)
+
+func newTrackExtensionObject*(
+  releaseIdentifier: string,
+  artistMbids: seq[string],
+  addedBy, addedAt: Option[string] = none(string)): TrackExtensionObject =
+  result = TrackExtensionObject(
+    releaseIdentifier: releaseIdentifier,
+    addedBy: addedBy,
+    addedAt: addedAt,
+    artistMbids: artistMbids
   )
