@@ -25,9 +25,9 @@ func newJSPF*(playlist: JSPFPlaylist): JSPF =
   result = JSPF(playlist: playlist)
 
 func newJSPFPlaylist*(
-    track: seq[JSPFTrack],
-    title, creator, annotation, info, image, date, license, identifier, location: Option[string] = none(string),
-    meta, attribution, link: Option[seq[JSPFAttributes]] = none(seq[JSPFAttributes])): JSPFPlaylist =
+  track: seq[JSPFTrack],
+  title, creator, annotation, info, image, date, license, identifier, location: Option[string] = none(string),
+  meta, attribution, link: Option[seq[JSPFAttributes]] = none(seq[JSPFAttributes])): JSPFPlaylist =
   result = JSPFPlaylist(
     track: track,
     date: date,
