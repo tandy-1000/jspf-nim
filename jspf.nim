@@ -6,7 +6,7 @@ type
 
   JSPFPlaylist* = ref object of RootObj
     title*, creator*, annotation*, info*, image*: Option[string]
-    track*: seq[JSPFTrack]
+    # track*: seq[JSPFTrack] ## To enable custom extensions through inheritance, define this yourself.
     date*, license*: Option[string]
     meta*, attribution*, link*: Option[seq[JSPFAttributes]]
     identifier*, location*: Option[string]
@@ -25,11 +25,11 @@ func newJSPF*(playlist: JSPFPlaylist): JSPF =
   result = JSPF(playlist: playlist)
 
 func newJSPFPlaylist*(
-  track: seq[JSPFTrack],
+  # track: seq[JSPFTrack],
   title, creator, annotation, info, image, date, license, identifier, location: Option[string] = none(string),
   meta, attribution, link: Option[seq[JSPFAttributes]] = none(seq[JSPFAttributes])): JSPFPlaylist =
   result = JSPFPlaylist(
-    track: track,
+    # track: track,
     date: date,
     license: license,
     meta: meta,
